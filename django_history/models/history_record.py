@@ -32,7 +32,7 @@ class HistoryRecord(models.Model):
         super(HistoryRecord, self).save(*args, **kwargs)
 
     class Meta:
-        app_label = 'history'
+        app_label = 'django_history'
 
 
 def log_record(sender, instance, *args, **kwargs):
