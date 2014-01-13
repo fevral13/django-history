@@ -4,7 +4,10 @@ import logging
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.simplejson import dumps
-from django.utils.timezone import now
+try:
+    from django.utils.timezone import now
+except ImportError:  # Django < 1.4
+    from datetime.datetime import now
 
 from .. import ACTION_TYPE_CHOICES, ACTION_CHANGE, ACTION_CREATE, ACTION_DELETE
 from ..middleware import thread_namespace
