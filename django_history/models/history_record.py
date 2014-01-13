@@ -7,7 +7,8 @@ from django.utils.simplejson import dumps
 try:
     from django.utils.timezone import now
 except ImportError:  # Django < 1.4
-    from datetime.datetime import now
+    from datetime import datetime
+    now = datetime.now
 
 from .. import ACTION_TYPE_CHOICES, ACTION_CHANGE, ACTION_CREATE, ACTION_DELETE
 from ..middleware import thread_namespace
