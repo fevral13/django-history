@@ -3,7 +3,6 @@ from decimal import Decimal
 from datetime import datetime, date, time
 from types import NoneType
 
-from django.utils.timezone import localtime
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 
@@ -42,11 +41,11 @@ def serialize_field(obj, field_name, fail_silently=False):
     elif isinstance(value, Decimal):
         result = float(value)
     elif isinstance(value, datetime):
-        result = unicode(localtime(value).strftime(DATETIME_FORMAT))
+        result = unicode(value.strftime(DATETIME_FORMAT))
     elif isinstance(value, time):
-        result = unicode(localtime(value).strftime(TIME_FORMAT))
+        result = unicode(value.strftime(TIME_FORMAT))
     elif isinstance(value, date):
-        result = unicode(localtime(value).strftime(DATE_FORMAT))
+        result = unicode(value.strftime(DATE_FORMAT))
     elif isinstance(value, models.Model):
         result = value.id
     else:
